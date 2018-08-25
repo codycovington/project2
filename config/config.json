@@ -10,8 +10,9 @@
   "test": {
     "username": "root",
     "password": "root",
-    "database": "testdb",
+    "database": "test_db",
     "host": "localhost",
+    "port": 8889,
     "dialect": "mysql",
     "logging": false
   },
