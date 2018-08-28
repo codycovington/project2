@@ -23,6 +23,13 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false
       }
     });
+
+    // The task needs to belong to a project
+    Task.belongsTo(models.Project, {
+      foreignKey: { 
+        allowNull: false
+      }
+    });
   };
   return Task;
 };

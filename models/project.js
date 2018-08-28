@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         }
       }
     });
-  
+
+    //Associate the Project with a User
     Project.associate = function(models){
       // The Project needs to belong to a User
       Project.belongsTo(models.User, {
@@ -18,6 +19,10 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false
         }
       });
+      //Associate Project to the Tasks
+      Project.hasMany(models.Task, {
+        onDelete: "cascade"
+      });
     };
-    return Project;
+    return Project;   
   };
