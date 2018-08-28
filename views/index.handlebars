@@ -3,23 +3,26 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+        <h2>This is our Home Page! Let's Change It!</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <label for="example-text">Task Input</label> 
+            {{!-- These labels will need some changing. Right now they are very basic just to change the example template to something that will fuction for us. --}}
+            <input type="text" id="new-task" class="form-control" aria-describedby="new-task" placeholder="Enter Your Task Here. ">
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <label for="example-description">Task Description</label>
+            {{!-- probably don't need a Task descripttion but I'm leaving this in for right now in case we need it for something else --}}
+            <textarea class="form-control" id="task-description" aria-describedby="task-description" placeholder="Enter Example Description"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
+        <h3>Tasks:</h3>
+        {{!-- this will be a list of the tasks --}}
+        <ul id="task-list" class="list-group">
+          {{#each task}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
+            <a href="example/{{this.id}}">{{this.type}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
