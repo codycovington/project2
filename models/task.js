@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Task = sequelize.define("Task", {
-    text: {
+    task_name: {
       type: DataTypes.STRING,
       // this field cannot be NULL
       allowNull: false,
@@ -9,10 +9,8 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    completed: {
-      type: DataTypes.BOOLEAN,
-      //Starting with false means that an action has to be taken to complete this task
-      defaultValue:false
+    category: {
+      type: DataTypes.STRING,
     }
   });
 

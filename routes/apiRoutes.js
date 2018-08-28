@@ -81,14 +81,14 @@ module.exports = function (app) {
   });
 
   // Create a new Task
-  app.post("/api/task", function (req, res) {
+  app.post("/api/tasks", function (req, res) {
     db.Task.create(req.body).then(function (dbTask) {
       res.json(dbTask);
     });
   });
 
   //update a task
-  app.put("/api/task", function(req, res) { 
+  app.put("/api/tasks", function(req, res) { 
     db.Task.update(
       req.body,
       {
@@ -101,7 +101,7 @@ module.exports = function (app) {
   });
 
   // Delete a Task by id
-  app.delete("/api/task/:id", function (req, res) {
+  app.delete("/api/tasks/:id", function (req, res) {
     db.Task.destroy({
       where: {
         id: req.params.id
