@@ -7,8 +7,7 @@ module.exports = function (app) {
             res.json(dbUser);
         });
     });
-
-
+    
     //the include property will bring in the user's tasks 
 
     app.get("/api/users", function (req, res) {
