@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
-      text: {
+      project_Name: {
         type: DataTypes.STRING,
         // this field cannot be NULL
         allowNull: false,
