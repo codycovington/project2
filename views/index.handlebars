@@ -6,7 +6,7 @@
         <h2>This is our Home Page! Let's Change It!</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Task Input</label> 
+            <label for="new-task">Task Input</label> 
             {{!-- These labels will need some changing. Right now they are very basic just to change the example template to something that will fuction for us. --}}
             <input type="text" id="new-task" class="form-control" aria-describedby="new-task" placeholder="Enter Your Task Here. ">
           </div>
@@ -22,7 +22,7 @@
         <ul id="task-list" class="list-group">
           {{#each task}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.type}}</a>
+            <a href="example/{{this.id}}">{{this.task_name}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

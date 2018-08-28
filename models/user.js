@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING
     });
 
-  
+
     User.associate = function (models) {
         //association between the User and the Project
         User.hasMany(models.Project, {
