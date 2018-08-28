@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Achievement = sequelize.define("Achievements", {
-        Award: DataTypes.STRING
+        task_completed: DataTypes.STRING
     });
 
     //association between the User and the Task
