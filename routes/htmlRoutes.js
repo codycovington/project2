@@ -5,8 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Task.findAll({}).then(function(dbTasks) {
       res.render("index", {
-        msg: "Tasks!",
-        tasks: dbTasks
+        task: dbTasks
       });
     });
   });
@@ -19,6 +18,17 @@ module.exports = function(app) {
       });
     });
   });
+
+
+  //get users
+  app.get("/users", function(req, res) {
+    db.User.findAll({}).then(function(dbUsers) {
+      res.render("User", {
+        User: dbUsers,
+      });
+    });
+  });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

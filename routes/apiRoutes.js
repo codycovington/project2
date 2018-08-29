@@ -27,7 +27,7 @@ module.exports = function (app) {
   });
 
   // Update a Project
-  app.put("/api/project", function(req, res) { 
+  app.put("/api/projects/:id", function(req, res) { 
     db.Project.update(
       req.body,
       {
@@ -69,7 +69,7 @@ module.exports = function (app) {
   });
 
   //Get a single task
-  app.get("/api/posts/:id", function (req, res) {
+  app.get("/api/tasks/:id", function (req, res) {
     db.Task.findOne({
       where: {
         id: req.params.id
@@ -81,14 +81,14 @@ module.exports = function (app) {
   });
 
   // Create a new Task
-  app.post("/api/tasks", function (req, res) {
+  app.post("/api/task", function (req, res) {
     db.Task.create(req.body).then(function (dbTask) {
       res.json(dbTask);
     });
   });
 
   //update a task
-  app.put("/api/tasks", function(req, res) { 
+  app.put("/api/tasks/:id", function(req, res) { 
     db.Task.update(
       req.body,
       {
