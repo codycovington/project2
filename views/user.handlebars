@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">User</h5>
+                    <ul id="allUsers" class="list-group">
+                        {{#each User}}
+                        <li data-id="{{this.id}}" class="list-group-item">
+                            {{!-- <a href="user/{{this.id}}">{{this.name}}</a> --}}
+                            <h4>{{this.name}}</h4>
+                            <button class="btn btn-danger float-right delete">ｘ</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{!-- the commented out code below is a form we can use to create a new user. We should be using it at some point. --}}
+                {{!-- <div class="card-body">
+                    <form class="create-form">
+
+                        <div class="form-group">
+                            <label for="newUser">User Name:</label>
+                            <input type="text" id="newUser" name="name">
+                        </div>
+
+                        <button type="submit">Add User</button>
+                        
+                </div> --}}
+                <div>
+                    <a href="/">← Back To Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
