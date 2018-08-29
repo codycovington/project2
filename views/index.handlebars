@@ -22,7 +22,8 @@
         <ul id="task-list" class="list-group">
           {{#each task}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.task_name}}</a>
+            <a href="tasks/{{this.id}}">{{this.task_name}} </a>
+            <p>Category: {{this.category}}</p>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

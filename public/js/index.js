@@ -1,6 +1,6 @@
 // Get references to page elements
 var $newTask = $("#new-task");
-var $taskDescription = $("#task-description");
+// var $taskDescription = $("#task-description");
 var $submitBtn = $("#submit");
 var $taskLists = $("#task-list");
 
@@ -12,7 +12,7 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/tasks",
+      url: "api/task",
       data: JSON.stringify(task)
     });
   },
@@ -36,7 +36,7 @@ var refreshTasks = function() {
     var $tasks = data.map(function(task) {
       var $a = $("<a>")
         .text(task.text)
-        .attr("href", "/task/" + task.id);
+        .attr("href", "/tasks/" + task.id);
 
       var $li = $("<li>")
         .attr({
@@ -66,21 +66,21 @@ var handleFormSubmit = function(event) {
 
   var task = {
     text: $newTask.val().trim(),
-    description: $taskDescription.val().trim()
+    // description: $taskDescription.val().trim()
   };
 
   //we don't have a task.description.
-  if (!(task.text && task.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(task.text && task.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
   API.saveTask(task).then(function() {
     refreshTasks();
   });
 
   $newTask.val("");
-  $taskDescription.val("");
+  // $taskDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
