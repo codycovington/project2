@@ -40,7 +40,7 @@ module.exports = function (app) {
   });
 
   // Delete a Project by id
-  app.delete("/api/project/:id", function (req, res) {
+  app.delete("/api/projects/:id", function (req, res) {
     db.Project.destroy({
       where: {
         id: req.params.id
@@ -81,7 +81,7 @@ module.exports = function (app) {
   });
 
   // Create a new Task
-  app.post("/api/task", function (req, res) {
+  app.post("/api/tasks", function (req, res) {
     db.Task.create(req.body).then(function (dbTask) {
       res.json(dbTask);
     });

@@ -41,6 +41,7 @@ $(".delete").on("click", function (){
 // Project logic
 
 var $newProject = $("#new-project");
+var $userProject = $("#user-project");
 // handles the input in the user-form class and enters the id  new-user to put it into the database
 $(".project-form").on("submit", function (event){
     event.preventDefault();
@@ -70,5 +71,48 @@ $(".delete").on("click", function (){
         url: "/api/projects/" + id.id
     }).then(function(){
         location.reload();
-    })
-})
+    });
+});
+
+
+// ========================================================================//
+// Task Logic
+
+var $newTask = $("#new-task");
+var $taskCategory = $("#task-category");
+var $UserId = $("#user-task");
+
+// handles the input in the task-form class and enters the id  task-user to put it into the database
+$(".task-form").on("submit", function (event){
+    event.preventDefault();
+    
+    var newTask = {
+        task_name: $newTask.val().trim(),
+        category: $taskCategory.val().trim(),
+        UserId: $UserId.val().trim()
+    };
+    console.log(newTask)
+
+    $.ajax("/api/tasks", {
+        type: "POST",
+        data: newTask
+    }).then (function(){
+        console.log("New task added: " + newTask)
+        location.reload();
+    });
+});
+
+// handles deleting the task
+$(".delete").on("click", function (){
+    var id = $(this).data(id);
+    
+    console.log(id.id)
+    
+    $.ajax("/api/tasks/" + id.id, {
+        type: "DELETE",
+        url: "/api/tasks/" + id.id
+    }).then(function(){
+        location.reload();
+    });
+});
+
