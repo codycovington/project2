@@ -3,14 +3,14 @@
         <div class="col-8 offset-2">
             <div class="card mt-4">
                 <div class="card-body">
-                    <h5 class="card-title">Add a User</h5>
+                    <h5 class="card-title">Projects</h5>
                     <tbody>
                         <tr class="form-row">
-                            <form class="user-form">
+                            <form class="project-form">
                                 <td colspan="4">
-                                    <input placeholder="Enter a name" id="new-user" type="text" name="name" />
+                                    <input placeholder="New Project" id="new-project" type="text" name="name" />
                                 </td>
-                                <td><button type="submit" class="btn btn-success">Create User</button>
+                                <td><button type="submit" class="btn btn-success">Create Project</button>
                                 </td>
                             </form>
                         </tr>
@@ -18,12 +18,12 @@
 
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">User</h5>
+                    <h5 class="card-title">Project</h5>
                     <ul id="allUsers" class="list-group">
-                        {{#each User}}
+                        {{#each Project}}
                         <li  class="list-group-item">
-                            {{!-- <a href="user/{{this.id}}">{{this.name}}</a> --}}
-                            <h4>{{this.id}}. {{this.name}}</h4>
+                            <h4>{{this.id}}. {{this.project_Name}}</h4>
+                            
                             <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
                         </li>
                         {{/each}}

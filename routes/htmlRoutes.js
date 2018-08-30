@@ -29,6 +29,15 @@ module.exports = function(app) {
     });
   });
 
+  //get projects
+  app.get("/projects", function(req, res) {
+    db.Project.findAll({}).then(function(dbProjects) {
+      res.render("Project", {
+        Project: dbProjects
+      });
+    });
+  });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         User.hasMany(models.Project, {
             onDelete: "cascade"
         });
+        
         //association between the project and tasks
         User.hasMany(models.Task, {
             onDelete: "cascade"
