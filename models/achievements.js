@@ -4,13 +4,13 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     //association between the User and the Task
-    Achievement.associate = function (models) {
-        Achievement.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Achievement.associate = function (models) {
+    //     Achievement.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Achievement;
 };
 
