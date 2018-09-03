@@ -23,6 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             foreignKey: {
                 allowNull: true
             }
+            
         });
 
         User.hasMany(models.Task, {
