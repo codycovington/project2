@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
     // The Task needs to belong to a User
     Task.belongsTo(models.User, {
       foreignKey: { 
-        allowNull: true
+        allowNull: true 
       }
     });
 

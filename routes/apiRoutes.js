@@ -110,4 +110,49 @@ module.exports = function (app) {
       res.json(dbTask);
     });
   });
+
+  // Grab category counts and send them via API
+  app.get("/api/graphdata", function (req, res) {
+
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    };
+  
+    const count_Complete = 
+      db.Task.count({ where: { category: "completed" }
+    });
+  
+    const count_InProgress = 
+    db.Task.count({ where: { category: "in-progress" }
+    });
+
+    const count_Todo =
+    db.Task.count({ where: { category: "todo"}
+    });
+  
+  
+    Promise
+    .all([count_Complete, count_InProgress, count_Todo])
+    .then(function (dbtask) {
+      res.json(dbtask);
+  
+      var graph_data_array = [];
+      var completed_array = [];
+      var in_progress_array = [];
+      var todo_array = [];
+      
+      completed_array.push(dbtask[0]);
+      in_progress_array.push(dbtask[1]);
+      todo_array.push(dbtask[2]);
+      graph_data_array.push(dbtask[0], dbtask[1], dbtask[2]);
+  
+  
+  
+      console.log(completed_array);
+      console.log(in_progress_array);
+      console.log(graph_data_array);
+    });
+  });
+
 };
