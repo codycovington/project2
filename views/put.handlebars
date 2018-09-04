@@ -1,0 +1,119 @@
+{{!-- these classes are bootstrap classes, Not sure what the documentation says for Purecss but changing most of the classes will be necessary --}}
+{{!-- Certain classes should not change since they are  for logic.js, they are notated in the readme for now.  --}}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card mt-4">
+            
+                {{!-- project card --}}
+                <div class="card-body">
+                    <h5 class="card-title">Projects</h5>
+                    <tbody>
+                        <tr class="form-row">
+                            <form class="project-form">
+                                <td colspan="4">
+                                    <input placeholder="New Project" id="new-project" type="text" name="name" />
+                                </td>
+                                <td><button type="submit" class="btn btn-success">Create Project</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Project</h5>
+                    <ul id="allProjects" class="list-group">
+                        {{#each Project}}
+                        <li  class="list-group-item">
+                            <h4>{{this.id}}. {{this.project_Name}}</h4>
+                            
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{!-- end of Project card --}}
+
+                {{!-- start of User --}}
+                <div class="card-body" id="user-section">
+                    <h5 class="card-title">Add a User</h5>
+                    <tbody>
+                        <tr class="form-row">
+                            <form class="user-form">
+                                <td colspan="4">
+                                    <input placeholder="Enter a name" id="new-user" type="text" name="name" />
+                                </td>
+                                <td colspan="4">
+                                    <input placeholder="Project ID" id="project-id" type="text" name="name" />
+                                </td>
+
+                                <td><button type="submit" class="btn btn-success">Create User</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">User</h5>
+                    <ul id="allUsers" class="list-group">
+                        {{#each User}}
+                        <li  class="list-group-item">
+                            
+                            <h4>{{this.id}}. {{this.name}}</h4>
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                {{!-- end of user --}}
+                {{!-- start of tasks --}}
+                <div class="card-body" id="task-section">
+                    <h5 class="card-title">Task</h5>
+                    <tbody>
+                        <tr class="form-row">
+                            <form class="task-form">
+                                <td colspan="4">
+                                    <input placeholder="Enter a task" id="new-task" type="text" name="name" />
+                                </td>
+                                <td colspan="4">
+                                    <input placeholder="Please input - To do, In progress, Done" id="task-category" type="text" name="category">
+                                </td>
+                                <td colspan="4">
+                                    <input placeholder="Please use your User Id" id="user-task" type="text" name="user">
+                                </td>
+                                <td><button type="submit" class="btn btn-success">Create Task</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> All Tasks</h5>
+                    <ul id="allTasks" class="list-group">
+                        {{#each Task}}
+                        <li class="list-group-item">
+                            <h4>{{this.id}}. {{this.task_name}}</h4>
+                            <p>Category: <strong>{{this.category}}</strong></p>
+                            <p>{{this.UserId}}</p>
+
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{!-- end of tasks --}}
+
+
+
+                <div>
+                    {{!-- we can figure out if we need this or if we want to put some other kind of link there. --}}
+                    {{!-- <a href="/">← Back To Home</a> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

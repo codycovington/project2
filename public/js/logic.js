@@ -1,4 +1,48 @@
 //============================================================================//
+// Project logic
+
+var $newProject = $("#new-project");
+// var $userProject = $("#user-project");
+// handles the input in the user-form class and enters the id  new-user to put it into the database
+$(".project-form").on("submit", function (event) {
+    event.preventDefault();
+
+    // this prevents premature submission without the required fields
+    if (!$newProject.val().trim()) {
+        alert("Please complete all fields in order to move forward.");
+        return
+    }
+    var newProject = {
+        project_Name: $newProject.val().trim()
+    };
+    console.log(newProject)
+
+    $.ajax("/api/projects", {
+        type: "POST",
+        data: newProject
+    }).then(function () {
+        console.log("New Project added: " + newProject)
+        location.reload();
+    });
+});
+
+// handles deleting the user
+$(".delete").on("click", function () {
+    var id = $(this).data(id);
+
+    console.log(id.id)
+
+    $.ajax("/api/projects/" + id.id, {
+        type: "DELETE",
+        url: "/api/projects/" + id.id
+    }).then(function () {
+        location.reload();
+    });
+});
+
+
+
+// ========================================================================//
 //user logic
 
 // Get references to page elements
@@ -43,48 +87,6 @@ $(".delete").on("click", function () {
     }).then(function () {
         location.reload();
     })
-})
-
-// ========================================================================//
-// Project logic
-
-var $newProject = $("#new-project");
-var $userProject = $("#user-project");
-// handles the input in the user-form class and enters the id  new-user to put it into the database
-$(".project-form").on("submit", function (event) {
-    event.preventDefault();
-
-    // this prevents premature submission without the required fields
-    if (!$newProject.val().trim()) {
-        alert("Please complete all fields in order to move forward.");
-        return
-    }
-    var newProject = {
-        project_Name: $newProject.val().trim()
-    };
-    console.log(newProject)
-
-    $.ajax("/api/projects", {
-        type: "POST",
-        data: newProject
-    }).then(function () {
-        console.log("New Project added: " + newProject)
-        location.reload();
-    });
-});
-
-// handles deleting the user
-$(".delete").on("click", function () {
-    var id = $(this).data(id);
-
-    console.log(id.id)
-
-    $.ajax("/api/projects/" + id.id, {
-        type: "DELETE",
-        url: "/api/projects/" + id.id
-    }).then(function () {
-        location.reload();
-    });
 });
 
 
