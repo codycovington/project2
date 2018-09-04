@@ -13,16 +13,26 @@ module.exports = function (sequelize, DataTypes) {
 
     //Associate the Project with a User
     Project.associate = function(models){
+      
+      //old code to go back to
+      
       // The Project needs to belong to a User
-      Project.belongsTo(models.User, {
-        foreignKey: { 
-          allowNull: false
-        }
-      });
+      // Project.belongsTo(models.User, {
+      //   foreignKey: { 
+      //     allowNull: false
+      //   }
+      // });
+
+
       //Associate Project to the Tasks
-      Project.hasMany(models.Task, {
-        onDelete: "cascade"
-      });
+    //   Project.hasMany(models.Task, {
+    //     onDelete: "cascade"
+    //   });
+
+    // new code to try
+    Project.hasMany(models.User),{
+      onDelete: "cascade"
+    }
     };
     return Project;   
   };

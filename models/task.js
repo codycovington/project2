@@ -18,16 +18,16 @@ module.exports = function (sequelize, DataTypes) {
     // The Task needs to belong to a User
     Task.belongsTo(models.User, {
       foreignKey: { 
-        allowNull: false
+        allowNull: true
       }
     });
 
     // The task needs to belong to a project
-    Task.belongsTo(models.Project, {
-      foreignKey: { 
-        allowNull: false
-      }
-    });
+    // Task.belongsTo(models.Project, {
+    //   foreignKey: { 
+    //     allowNull: false
+    //   }
+    // });
   };
   return Task;
 };

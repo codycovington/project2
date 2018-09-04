@@ -14,15 +14,15 @@ module.exports = function (app) {
     db.Project.findAll({
       where: query,
       include: [db.User]
-    }).then(function (dbtask) {
-      res.json(dbtask);
+    }).then(function (dbProjects) {
+      res.json(dbProjects);
     });
   });
 
   // Create a new Project
-  app.post("/api/project", function (req, res) {
-    db.Project.create(req.body).then(function (dbTask) {
-      res.json(dbTask);
+  app.post("/api/projects", function (req, res) {
+    db.Project.create(req.body).then(function (dbProjects) {
+      res.json(dbProjects);
     });
   });
 
@@ -34,19 +34,19 @@ module.exports = function (app) {
         where: {
           id: req.body.id
         }
-      }).then(function(dbTask){
-        res.json(dbTask)
+      }).then(function(dbProjects){
+        res.json(dbProjects)
       });
   });
 
   // Delete a Project by id
-  app.delete("/api/project/:id", function (req, res) {
+  app.delete("/api/projects/:id", function (req, res) {
     db.Project.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbTask) {
-      res.json(dbTask);
+    }).then(function (dbProjects) {
+      res.json(dbProjects);
     });
   });
   
@@ -81,7 +81,7 @@ module.exports = function (app) {
   });
 
   // Create a new Task
-  app.post("/api/task", function (req, res) {
+  app.post("/api/tasks", function (req, res) {
     db.Task.create(req.body).then(function (dbTask) {
       res.json(dbTask);
     });
