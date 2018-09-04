@@ -57,10 +57,14 @@ module.exports = function (app) {
     });
   });
 
+<<<<<<< HEAD
 // Get the graphdata to the page
 app.get("/graphdata", function (req, res) {
   res.render("graphdata");
 });
+=======
+
+>>>>>>> f5954e62416d4293d815c3063b22afc408e2701c
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
