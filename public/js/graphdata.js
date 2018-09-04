@@ -12,9 +12,11 @@ $.ajax({
         //$('#test').html(data);
         buildBarChartGraph(data[0], data[1], data[2]);
         buildPieChart(data[0], data[1], data[2]);
+        rewardRank(data[0]);
     }
 });
 
+// Build the bar chart
 function buildBarChartGraph(completed, in_progress, todo) {
     console.log(completed, in_progress);
 
@@ -68,6 +70,7 @@ var myChart = new Chart(ctx, {
 });
 }
 
+// Build the pie chart
 function buildPieChart(completed, in_progress, todo) {
 
     new Chart(document.getElementById("pieChart"), {
@@ -90,6 +93,23 @@ function buildPieChart(completed, in_progress, todo) {
           responsive: false
         }
     });
+}
+
+// Determine the rank and then post it accordingly using jquery!
+function rewardRank(completed) {
+    var level = parseInt(completed);
+    console.log("Number of completed tasks: " + completed);
+
+    if (level < 5) {
+        console.log("Task newbie");
+        $("#rank").html("Current Level: Task Newbie!");
+    } else if (level >= 5 && level <= 10){
+        console.log("Productive person");
+        $("#rank").html("Current Level: Productive Person!");
+    } else if (level > 10) {
+        console.log("Task Wizard")
+        $("#rank").html("Current Level: Task Wizard!");
+    }   
 }
 
 });
