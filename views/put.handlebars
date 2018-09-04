@@ -1,10 +1,11 @@
-{{!-- these classes are bootstrap classes, Not sure what the documentation says for Purecss but changing most of the classes will be necessary --}}
-{{!-- Certain classes should not change since they are  for logic.js, they are notated in the readme for now.  --}}
+{{!-- these classes are bootstrap classes, Not sure what the documentation says for Purecss but changing most of the classes
+will be necessary --}} {{!-- Certain classes should not change since they are for logic.js, they are notated in the readme
+for now. --}}
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
             <div class="card mt-4">
-            
+
                 {{!-- project card --}}
                 <div class="card-body">
                     <h5 class="card-title">Projects</h5>
@@ -25,16 +26,16 @@
                     <h5 class="card-title">Project</h5>
                     <ul id="allProjects" class="list-group">
                         {{#each Project}}
-                        <li  class="list-group-item">
+                        <li class="list-group-item">
                             <h4>{{this.id}}. {{this.project_Name}}</h4>
-                            
+
                             <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
                         </li>
                         {{/each}}
                     </ul>
                 </div>
-                {{!-- end of Project card --}}
-
+                {{!-- end of Project card --}} 
+                
                 {{!-- start of User --}}
                 <div class="card-body" id="user-section">
                     <h5 class="card-title">Add a User</h5>
@@ -55,12 +56,13 @@
                     </tbody>
 
                 </div>
+                {{!-- delete button --}}
                 <div class="card-body">
                     <h5 class="card-title">User</h5>
                     <ul id="allUsers" class="list-group">
                         {{#each User}}
-                        <li  class="list-group-item">
-                            
+                        <li class="list-group-item">
+
                             <h4>{{this.id}}. {{this.name}}</h4>
                             <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
                         </li>
@@ -68,23 +70,34 @@
                     </ul>
                 </div>
 
-                {{!-- end of user --}}
-                {{!-- start of tasks --}}
+                {{!-- end of user --}} {{!-- start of tasks --}}
                 <div class="card-body" id="task-section">
                     <h5 class="card-title">Task</h5>
+
                     <tbody>
                         <tr class="form-row">
                             <form class="task-form">
                                 <td colspan="4">
                                     <input placeholder="Enter a task" id="new-task" type="text" name="name" />
                                 </td>
+                                <br>
                                 <td colspan="4">
-                                    <input placeholder="Please input - To do, In progress, Done" id="task-category" type="text" name="category">
+                                    <form id="task-category">
+                                        <fieldset>
+                                            <div>
+                                                <input type="radio" name="category" value="To Do" /> To Do <br>
+                                                <input type="radio" name="category" value="In Progress" /> In Progress <br>
+                                                <input type="radio" name="category" value="Done" /> Done <br>
+                                                <input type="radio" name="category" value="Ice Box" /> Ice Box <br>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+
                                 </td>
                                 <td colspan="4">
                                     <input placeholder="Please use your User Id" id="user-task" type="text" name="user">
                                 </td>
-                                <td><button type="submit" class="btn btn-success">Create Task</button>
+                                <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
                                 </td>
                             </form>
                         </tr>
@@ -98,8 +111,36 @@
                         <li class="list-group-item">
                             <h4>{{this.id}}. {{this.task_name}}</h4>
                             <p>Category: <strong>{{this.category}}</strong></p>
-                            <p>{{this.UserId}}</p>
+                            <p>User ID: <strong>{{this.UserId}}</strong></p>
 
+                            <div>
+                                <form class="update-form" data-id="{{data.id}}">
+                                    {{!--
+                                    <td colspan="4">
+                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
+                                    </td> --}}
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+                                            <fieldset>
+                                                <div>
+                                                    <input type="radio" name="category" value="To Do" /> To Do <br>
+                                                    <input type="radio" name="category" value="In Progress" /> In Progress
+                                                    <br>
+                                                    <input type="radio" name="category" value="Done" /> Done <br>
+                                                    <input type="radio" name="category" value="Ice Box" /> Ice Box <br>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                        
+                                    </td>
+                                    <td colspan="4">
+                                        <input placeholder="Please use your User Id" id="update-user" type="text" name="user">
+                                    </td>
+                                    <td><button type="submit"data-id="{{this.id}}" id="updateValue" class="btn btn-success">Update Task</button>
+                                    </td>
+                                </form>
+                            </div>
                             <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
                         </li>
                         {{/each}}
@@ -110,8 +151,8 @@
 
 
                 <div>
-                    {{!-- we can figure out if we need this or if we want to put some other kind of link there. --}}
-                    {{!-- <a href="/">← Back To Home</a> --}}
+                    {{!-- we can figure out if we need this or if we want to put some other kind of link there. --}} {{!-- <a
+                        href="/">← Back To Home</a> --}}
                 </div>
             </div>
         </div>
