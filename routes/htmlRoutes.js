@@ -31,9 +31,13 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/tasks/:id", function (req, res) {
-    db.Task.findOne({ where: { id: req.params.id } }).then(function (dbTask) {
-      res.render("example", {
-        task: dbTask
+    db.Task.findAll({ 
+      where: { 
+        UserId: req.params.id 
+    } 
+  }).then(function (dbTasks) {
+      res.render("Tasks", {
+        Task: dbTasks
       });
     });
   });

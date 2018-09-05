@@ -69,16 +69,16 @@ module.exports = function (app) {
   });
 
   //Get a single task
-  app.get("/api/tasks/:id", function (req, res) {
-    db.Task.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.User]
-    }).then(function (dbTask) {
-      res.json(dbTask);
-    });
-  });
+  // app.get("/api/tasks/:id", function (req, res) {
+  //   db.Task.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     include: [db.User]
+  //   }).then(function (dbTask) {
+  //     res.json(dbTask);
+  //   });
+  // });
 
   // Create a new Task
   app.post("/api/tasks", function (req, res) {
@@ -155,4 +155,37 @@ module.exports = function (app) {
     });
   });
 
-};
+  
+    app.get("/api/tasks/:id", function (req, res) {
+      db.Task.findAll({
+        where: {
+          UserId: req.params.id
+        },
+        include: [db.User]
+      }).then(function (dbTask) {
+        res.json(dbTask);
+      });
+    });
+  
+
+    // var query = {};
+    // if (req.query.user_id) {
+    //   query.UserId = req.query.user_id;
+    // };
+
+  //   var id = $(this).data(id);
+  
+  //   const findTasksByUser= 
+  //     db.Task.findAll({ where: { userid: id }
+       
+  //   });
+  
+  //   Promise
+  //   .all([findTaskByUser])
+  //   .then(function (dbtask) {
+  //     res.json(dbtask);
+  //     console.log(id + "HELLO");
+  //   });
+  // });
+
+  };
