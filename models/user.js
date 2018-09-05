@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING
     });
 
-
+  
     User.associate = function (models) {
 
         // old code to go back to
