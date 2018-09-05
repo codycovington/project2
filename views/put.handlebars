@@ -70,7 +70,9 @@ for now. --}}
                     </ul>
                 </div>
 
-                {{!-- end of user --}} {{!-- start of tasks --}}
+                {{!-- end of user --}}
+                
+                {{!-- start of tasks --}}
                 <div class="card-body" id="task-section">
                     <h5 class="card-title">Task</h5>
 
@@ -85,18 +87,16 @@ for now. --}}
                                     <form id="task-category">
                                         <fieldset>
                                             <div>
-                                                <input type="radio" name="category" value="To Do" /> To Do <br>
-                                                <input type="radio" name="category" value="In Progress" /> In Progress <br>
-                                                <input type="radio" name="category" value="Done" /> Done <br>
-                                                <input type="radio" name="category" value="Ice Box" /> Ice Box <br>
-                                            </div>
+                                                    <input type="radio" name="category" value="todo" /> todo <br>
+                                                    <input type="radio" name="category" value="in-progress" /> in-progress<br>
+                                                    <input type="radio" name="category" value="completed" /> completed <br>
+                                                    <input type="radio" name="category" value="icebox" /> icebox <br>
+                                                </div>
                                         </fieldset>
                                     </form>
 
                                 </td>
-                                <td colspan="4">
-                                    <input placeholder="Please use your User Id" id="user-task" type="text" name="user">
-                                </td>
+                                
                                 <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
                                 </td>
                             </form>
@@ -115,29 +115,25 @@ for now. --}}
 
                             <div>
                                 <form class="update-form" data-id="{{data.id}}">
-                                    {{!--
-                                    <td colspan="4">
-                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
-                                    </td> --}}
+                                    
                                     <br>
                                     <td colspan="4">
                                         <form id="task-category">
                                             <fieldset>
                                                 <div>
-                                                    <input type="radio" name="category" value="To Do" /> To Do <br>
-                                                    <input type="radio" name="category" value="In Progress" /> In Progress
-                                                    <br>
-                                                    <input type="radio" name="category" value="Done" /> Done <br>
-                                                    <input type="radio" name="category" value="Ice Box" /> Ice Box <br>
+                                                    <input type="radio" name="category" value="todo" /> todo <br>
+                                                    <input type="radio" name="category" value="in-progress" /> in-progress<br>
+                                                    <input type="radio" name="category" value="completed" /> completed <br>
+                                                    <input type="radio" name="category" value="icebox" /> icebox <br>
                                                 </div>
                                             </fieldset>
                                         </form>
                                         
                                     </td>
                                     <td colspan="4">
-                                        <input placeholder="Please use your User Id" id="update-user" type="text" name="user">
+                                    
                                     </td>
-                                    <td><button type="submit"data-id="{{this.id}}" id="updateValue" class="btn btn-success">Update Task</button>
+                                    <td><button  data-id="{{this.id}}" id="updateValue" class=" updateValue btn btn-success">Update Task</button>
                                     </td>
                                 </form>
                             </div>
