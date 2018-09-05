@@ -3,7 +3,7 @@ $( document ).ready(function() {
 
     $(".login").on("click", function () {
         var id = $(this).data(id);
-        window.location.href = `/tasks/${id.id}`;
+        window.location.href = `/kanban/${id.id}`;
         // console.log(id.id)
      
         // $.ajax("/tasks/" + id.id, {

@@ -42,7 +42,6 @@ module.exports = function (app) {
     });
   });
 
-
   //get users displyed to page
   app.get("/users", function (req, res) {
     db.User.findAll({}).then(function (dbUsers) {
@@ -64,6 +63,70 @@ module.exports = function (app) {
 // Get the graphdata to the page
 app.get("/graphdata", function (req, res) {
   res.render("graphdata");
+});
+
+ // MAIN KANBAN GET METHOD FOR DASHBOARD =====================================//
+ app.get("/kanban/:id", function (req, res) {
+
+  const completed_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "completed"
+  }})
+ 
+  const inprogress_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "in-progress"
+  }});
+
+  const todo_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "todo"
+  }});
+
+  const icebox_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "icebox"
+  }});
+
+  Promise
+  .all([completed_column, inprogress_column, todo_column, icebox_column])
+  .then(function (dbtasks) {
+
+    async function asyncCall() {
+    // console.log(dbtasks[0],dbtasks[1],dbtasks[2],dbtasks[3]);
+    // console.log("Async function executed");
+    await res.render("Tasks", {
+      Completed: dbtasks[0],
+      InProgress: dbtasks[1],
+      Todo: dbtasks[2],
+      Icebox: dbtasks[3]
+    });
+   }
+    asyncCall();
+  });
+});
+//===========================================================================//
+
+ // Load example page and pass in an example by id
+ app.get("/in-progress/:id", function (req, res) {
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "in-progress"
+  } 
+}).then(function (dbTasks) {
+    res.render("Tasks", {
+      Task: dbTasks
+    });
+  });
 });
 
   // Render 404 page for any unmatched routes
