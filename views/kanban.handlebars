@@ -39,18 +39,13 @@
         </div>
 
         <section class="container">
-            <div class="columns is-mobile is-centered" id="sectioncontainer">
-
-                <tbody>
+                     <tbody>
                         <tr class="form-row">
                             <form class="task-form">
-                                <td colspan="4">
+                                <td colspan="2">
                                     <input placeholder="Add a task" id="new-task" type="text" name="name" />
-                                </td>
-                                <br>
-                                <td colspan="4">
-                                    <form id="task-category">
-                                            <fieldset>
+                                    <form id="task-category">  
+                                        <td colspan="2">
                                             <div>
                                                <select class="dropdown">
                                                  <option name="category" value="todo">Todo</option>
@@ -58,19 +53,20 @@
                                                  <option name="category" value="completed">Completed</option>
                                                  <option name="category" value="icebox">Ice Box</option>
                                                 </select>
-                                            </div>
-                                            </fieldset>
+                                            </div>          
                                     </form>
-
                                 </td>
-                                <td colspan="4">
-                                    <input placeholder="Please use your User Id" id="user-task" type="text" name="user">
+                                </td>
+                                <td colspan="2">
+                                    {{!-- <input placeholder="Please use your User Id" id="user-task" type="text" name="user"> --}}
                                 </td>
                                 <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
                                 </td>
                             </form>
                         </tr>
                     </tbody>
+
+            <div class="columns is-mobile is-centered" id="sectioncontainer">
                 <div class="column is-narrow">
                     <article class="message is-success">
                         <div class="message-header">
@@ -92,7 +88,7 @@
                                     <br>
                                     <td colspan="4">
                                         <form id="task-category">
-                                            <fieldset>
+                                            
                                                 <div>
                                                     <select class="update_task">
                                                     <option name="category" value="todo">Todo</option>
@@ -101,18 +97,18 @@
                                                     <option name="category" value="icebox">Ice Box</option>
                                                     </select>
                                                 </div>
-                                            </fieldset>
+                                        
                                         </form>
                                         
                                     </td>
                                     <td colspan="4">
-                                        <input placeholder="Please use your User Id" id="update-user" type="text" name="user">
+                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
                                     </td>
-                                    <td><button type="submit"data-id="{{this.id}}" id="updateValue" class="btn btn-success">Update Task</button>
+                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
                                     </td>
                                 </form>
 
-                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -132,7 +128,35 @@
                             {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
                             {{!-- <p>{{this.UserId}}</p> --}}
 
-                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                            <form class="update-form" data-id="{{data.id}}">
+                                    {{!--
+                                    <td colspan="4">
+                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
+                                    </td> --}}
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+                                            
+                                                <div>
+                                                    <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                    </select>
+                                                </div>
+                                        
+                                        </form>
+                                        
+                                    </td>
+                                    <td colspan="4">
+                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
+                                    </td>
+                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
+                                    </td>
+                                </form>
+
+                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -152,7 +176,35 @@
                             {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
                             {{!-- <p>{{this.UserId}}</p> --}}
 
-                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                            <form class="update-form" data-id="{{data.id}}">
+                                    {{!--
+                                    <td colspan="4">
+                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
+                                    </td> --}}
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+                                            
+                                                <div>
+                                                    <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                    </select>
+                                                </div>
+                                        
+                                        </form>
+                                        
+                                    </td>
+                                    <td colspan="4">
+                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
+                                    </td>
+                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
+                                    </td>
+                                </form>
+
+                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -171,7 +223,35 @@
                             <h4>{{this.task_name}}</h4>
                             {{!-- <p>Category: <strong>{{this.category}}</strong></p>
                             <p>{{this.UserId}}</p> --}}
-                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+
+                            <form class="update-form" data-id="{{data.id}}">
+                                    {{!--
+                                    <td colspan="4">
+                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
+                                    </td> --}}
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+                                            
+                                                <div>
+                                                    <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                    </select>
+                                                </div>
+                                        
+                                        </form>
+                                        
+                                    </td>
+                                    <td colspan="4">
+                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
+                                    </td>
+                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
+                                    </td>
+                                </form>
+                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
                         </li>
                         {{/each}}
                     </ul>

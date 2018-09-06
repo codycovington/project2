@@ -1,37 +1,139 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page! Let's Change It!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="new-task">Task Input</label> 
-            {{!-- These labels will need some changing. Right now they are very basic just to change the example template to something that will fuction for us. --}}
-            <input type="text" id="new-task" class="form-control" aria-describedby="new-task" placeholder="Enter Your Task Here. ">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Task Description</label>
-            {{!-- probably don't need a Task descripttion but I'm leaving this in for right now in case we need it for something else --}}
-            <textarea class="form-control" id="task-description" aria-describedby="task-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Tasks:</h3>
-        {{!-- this will be a list of the tasks --}}
-        <ul id="task-list" class="list-group">
-          {{#each task}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="tasks/{{this.id}}">{{this.task_name}} </a>
-            <p>Category: {{this.category}}</p>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<body>
+    <section class="hero is-info is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="../">
+                            <img src="./img/seisan-type-white.png" alt="Logo">
+                        </a>
+                        <span class="navbar-burger burger" data-target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                            <span class="navbar-item">
+                                <a class="button is-white is-outlined" href="/users">
+                                    <span class="icon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <span>Login</span>
+                                </a>
+                            </span>
+                            {{!-- <span class="navbar-item">
+                                <a class="button is-white is-outlined" href="#">
+                                    <span class="icon">
+                                        <i class="fa fa-superpowers"></i>
+                                    </span>
+                                    <span>Todo</span>
+                                </a>
+                            </span>
+                            <span class="navbar-item"> --}}
+
+                                <!-- <a class="button is-white is-outlined modal-button" data-target="modal-ter" aria-haspopup="true">Progress
+                                    <span class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </span>
+                                </a> -->
+                                <a class="button is-white is-outlined modal-button" data-target="modal-ter" aria-haspopup="true">
+                                    <span class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </span>
+                                    <span>Progress</span>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Modal title</p>
+                                    <button class="delete" aria-label="close"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <!-- Content ... -->
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button is-success">Save changes</button>
+                                    <button class="button">Cancel</button>
+                                </footer>
+                            </div>
+
+                            <span>
+
+
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        Be Productive
+                    </h1>
+                    <h2 class="subtitle">
+                        The Ninja's Science of Getting Things Done.
+                    </h2>
+
+
+                    <div class="box">
+                        <!-- <div class="field is-grouped">
+                            <p class="control is-expanded"> -->
+                        <!-- <input class="input" type="text" placeholder="Select User">
+                                <div class="control">
+                                    <div class="select">
+                                        <select>
+                                            <option>Select dropdown</option>
+                                            <option>With options</option>
+                                        </select> -->
+                        <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                    <span>Select User</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-item">
+                                        <ul class="menu-list">
+
+                                            <ul>
+                                                <li><a class="is-active href=" ">User1</a></li>
+                                                    <li><a href=" ">User2</a></li>
+                                                    <li><a href=" ">User3</a></li>
+                                                </ul>
+                                            </li>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                    <!-- <p class="control ">
+                        <a class="button is-info ">
+                            Notify Me
+                        </a>
+                    </p> -->
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </section>
+    <script async type="text/javascript " src="../js/bulma.js "></script>
+
