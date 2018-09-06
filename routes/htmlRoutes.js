@@ -103,7 +103,7 @@ app.get("/graphdata", function (req, res) {
     async function asyncCall() {
     // console.log(dbtasks[0],dbtasks[1],dbtasks[2],dbtasks[3]);
     // console.log("Async function executed");
-    await res.render("Tasks", {
+    await res.render("kanban", {
       Completed: dbtasks[0],
       InProgress: dbtasks[1],
       Todo: dbtasks[2],
