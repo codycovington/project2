@@ -108,7 +108,7 @@ $("#getValue").click(function (event) {
     console.log($taskCategory)
 
     // this prevents premature submission without the required fields
-    if (!$newTask.val().trim() || !$taskCategory || !$UserId.val().trim()) {
+    if (!$newTask.val().trim() || !$taskCategory || !$UserId {
         alert("Please complete all fields in order to move forward.");
         return
     };
