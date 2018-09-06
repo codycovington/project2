@@ -50,16 +50,16 @@
                                 <br>
                                 <td colspan="4">
                                     <form id="task-category">
-                                        
+                                            <fieldset>
                                             <div>
-                                               <select>
+                                               <select id="dropdown">
                                                  <option name="category" value="todo">Todo</option>
                                                  <option name="category" value="in-progress">In-Progress</option>
                                                  <option name="category" value="completed">Completed</option>
                                                  <option name="category" value="icebox">Ice Box</option>
                                                 </select>
                                             </div>
-                                        
+                                            </fieldset>
                                     </form>
 
                                 </td>
@@ -84,6 +84,33 @@
                             <h4>{{this.task_name}}</h4>
                             {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
                             {{!-- <p>{{this.UserId}}</p> --}}
+                            <form class="update-form" data-id="{{data.id}}">
+                                    {{!--
+                                    <td colspan="4">
+                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
+                                    </td> --}}
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+                                            <fieldset>
+                                                <div>
+                                                    <select id="udpate_input">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                    </select>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                        
+                                    </td>
+                                    <td colspan="4">
+                                        <input placeholder="Please use your User Id" id="update-user" type="text" name="user">
+                                    </td>
+                                    <td><button type="submit"data-id="{{this.id}}" id="updateValue" class="btn btn-success">Update Task</button>
+                                    </td>
+                                </form>
 
                             <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
                         </li>
