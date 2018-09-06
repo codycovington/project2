@@ -10,31 +10,38 @@ $.ajax({
         var names = data
         //console.log(data[0], data[1]);
         //$('#test').html(data);
+
         buildBarChartGraph(data[0], data[1], data[2], data[3]);
         buildPieChart(data[0], data[1], data[2], data[3]);
+
         rewardRank(data[0]);
     }
 });
 
 // Build the bar chart
+
 function buildBarChartGraph(completed, in_progress, todo, icebox) {
+
     console.log(completed, in_progress);
 
     var completed_label = completed;
     var in_progress_label = in_progress;
     var todo_label = todo;
+
     var icebox_label = icebox;
-    console.log(todo_label);
+
 
     var ctx = document.getElementById("barChart");
 
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
+
         labels: ["Completed", "In-Progress", "Todo", "IceBox"],
         datasets: [{
             label: "Overview of Tasks",
             data: [completed_label, in_progress_label, todo_label, icebox_label],
+
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -72,17 +79,23 @@ var myChart = new Chart(ctx, {
 }
 
 // Build the pie chart
+
 function buildPieChart(completed, in_progress, todo, icebox) {
+
 
     new Chart(document.getElementById("pieChart"), {
         type: 'doughnut',
         data: {
+
           labels: ["Completed", "In Progress", "Todo", "Icebox"],
+
           datasets: [
             {
               label: "Seisan: Tasks Overview",
               backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+
               data: [completed, in_progress, todo, icebox]
+
             }
           ]
         },
