@@ -147,7 +147,7 @@ $(".delete").on("click", function () {
 });
 
 //handles the updating of a task
-$("#updateValue").click(function (event) {
+$(".updateValue").click(function (event) {
     var id = $(this).data(id);
     var selValue = $(".update_task").val();
     console.log(id.id)
@@ -170,7 +170,7 @@ $("#updateValue").click(function (event) {
         data: update
     }).then(function () {
         console.log("updated");
-        location.reload();
+        window.location.reload();
     });
 })
 

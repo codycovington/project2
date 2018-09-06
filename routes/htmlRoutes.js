@@ -10,7 +10,7 @@ module.exports = function (app) {
     db.Project.findAll({}).then(function (dbProjects) {
       db.User.findAll({}).then(function (dbUsers) {
         db.Task.findAll({}).then(function (dbTasks) {
-          return res.render("put", {
+          return res.render("index", {
             Project: dbProjects,
             User: dbUsers,
             Task: dbTasks
