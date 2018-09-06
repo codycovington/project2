@@ -94,7 +94,7 @@ $(".delete").on("click", function () {
 // Task Logic
 $("#getValue").click(function (event) {
     event.preventDefault();
-    var selValue = $("#dropdown").val();
+    var selValue = $(".dropdown").val();
     console.log(selValue)
 
 
@@ -149,7 +149,7 @@ $(".delete").on("click", function () {
 //handles the updating of a task
 $("#updateValue").click(function (event) {
     var id = $(this).data(id);
-    var selValue = $("#update_task").val();
+    var selValue = $(".update_task").val();
     console.log(id.id)
     console.log(selValue)
 
