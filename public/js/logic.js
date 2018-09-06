@@ -92,23 +92,30 @@ $(".delete").on("click", function () {
 
 // ========================================================================//
 // Task Logic
-
-var $newTask = $("#new-task");
-var $taskCategory = $("#task-category");
-var $UserId = $("#user-task");
-
-// handles the input in the task-form class and enters the id  task-user to put it into the database
-$(".task-form").on("submit", function (event) {
+$("#getValue").click(function (event) {
     event.preventDefault();
+    var selValue = $("input[name=category]:checked").val();
+    console.log(selValue)
+
+
+    var $newTask = $("#new-task");
+    var $taskCategory = selValue;
+    var $UserId = $("#user-task");
+    console.log("Category: " + $taskCategory)
+    // handles the input in the task-form class and enters the id  task-user to put it into the database
+
+
+    console.log($taskCategory)
+
     // this prevents premature submission without the required fields
-    if (!$newTask.val().trim() || !$taskCategory.val().trim() || !$UserId.val().trim()) {
+    if (!$newTask.val().trim() || !$taskCategory || !$UserId.val().trim()) {
         alert("Please complete all fields in order to move forward.");
         return
-    }
+    };
 
     var newTask = {
         task_name: $newTask.val().trim(),
-        category: $taskCategory.val().trim(),
+        category: $taskCategory,
         UserId: $UserId.val().trim()
     };
     console.log(newTask)
@@ -121,6 +128,8 @@ $(".task-form").on("submit", function (event) {
         location.reload();
     });
 });
+
+
 
 // handles deleting the task
 $(".delete").on("click", function () {
@@ -136,4 +145,35 @@ $(".delete").on("click", function () {
         location.reload();
     });
 });
+
+//handles the updating of a task
+$("#updateValue").click(function (event) {
+    var id = $(this).data(id);
+    var selValue = $("input[name=category]:checked").val();
+    console.log(id.id)
+    console.log(selValue)
+
+
+    var $updateCategory = selValue;
+    var $updateUser = $("#update-user");
+
+    var update = {
+        id: id.id,
+        category: $updateCategory
+    };
+    console.log("id updated: " + id.id);
+    console.log("category updated: " + $updateCategory);
+
+    $.ajax("/api/tasks/" + id.id, {
+        method: "PUT",
+        url: "/api/tasks/" + id.id,
+        data: update
+    }).then(function () {
+        console.log("updated");
+        location.reload();
+    });
+})
+
+
+
 

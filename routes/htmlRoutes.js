@@ -57,7 +57,10 @@ module.exports = function (app) {
     });
   });
 
-
+// Get the graphdata to the page
+app.get("/graphdata", function (req, res) {
+  res.render("graphdata");
+});
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
