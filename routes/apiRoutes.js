@@ -131,6 +131,7 @@ module.exports = function (app) {
     db.Task.count({ where: { category: "todo"}
     });
 
+
     const count_iceBox =
     db.Task.count({ where: { category: "icebox"}
     });
@@ -138,20 +139,25 @@ module.exports = function (app) {
   
     Promise
     .all([count_Complete, count_InProgress, count_Todo, count_iceBox])
+
     .then(function (dbtask) {
       res.json(dbtask);
   
       var graph_data_array = [];
       var completed_array = [];
       var in_progress_array = [];
+
       var icebox_array = [];
+
       var todo_array = [];
       
       completed_array.push(dbtask[0]);
       in_progress_array.push(dbtask[1]);
       todo_array.push(dbtask[2]);
+
       icebox_array.push(dbtask[3]);
       graph_data_array.push(dbtask[0], dbtask[1], dbtask[2], dbtask[3]);
+
   
   
   
@@ -160,6 +166,7 @@ module.exports = function (app) {
       console.log(graph_data_array);
     });
   });
+
 
   
     app.get("/api/tasks/:id", function (req, res) {
@@ -195,3 +202,4 @@ module.exports = function (app) {
   // });
 
   };
+

@@ -65,6 +65,7 @@ app.get("/graphdata", function (req, res) {
   res.render("graphdata");
 });
 
+
  // MAIN KANBAN GET METHOD FOR DASHBOARD =====================================//
  app.get("/kanban/:id", function (req, res) {
 
@@ -128,6 +129,7 @@ app.get("/graphdata", function (req, res) {
     });
   });
 });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
