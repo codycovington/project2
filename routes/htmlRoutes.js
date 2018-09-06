@@ -31,13 +31,16 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/tasks/:id", function (req, res) {
-    db.Task.findOne({ where: { id: req.params.id } }).then(function (dbTask) {
-      res.render("example", {
-        task: dbTask
+    db.Task.findAll({ 
+      where: { 
+        UserId: req.params.id 
+    } 
+  }).then(function (dbTasks) {
+      res.render("Tasks", {
+        Task: dbTasks
       });
     });
   });
-
 
   //get users displyed to page
   app.get("/users", function (req, res) {
@@ -61,6 +64,72 @@ module.exports = function (app) {
 app.get("/graphdata", function (req, res) {
   res.render("graphdata");
 });
+
+
+ // MAIN KANBAN GET METHOD FOR DASHBOARD =====================================//
+ app.get("/kanban/:id", function (req, res) {
+
+  const completed_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "completed"
+  }})
+ 
+  const inprogress_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "in-progress"
+  }});
+
+  const todo_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "todo"
+  }});
+
+  const icebox_column = 
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "icebox"
+  }});
+
+  Promise
+  .all([completed_column, inprogress_column, todo_column, icebox_column])
+  .then(function (dbtasks) {
+
+    async function asyncCall() {
+    // console.log(dbtasks[0],dbtasks[1],dbtasks[2],dbtasks[3]);
+    // console.log("Async function executed");
+    await res.render("kanban", {
+      Completed: dbtasks[0],
+      InProgress: dbtasks[1],
+      Todo: dbtasks[2],
+      Icebox: dbtasks[3]
+    });
+   }
+    asyncCall();
+  });
+});
+//===========================================================================//
+
+ // Load example page and pass in an example by id
+ app.get("/in-progress/:id", function (req, res) {
+  db.Task.findAll({ 
+    where: { 
+      UserId: req.params.id,
+      category: "in-progress"
+  } 
+}).then(function (dbTasks) {
+    res.render("Tasks", {
+      Task: dbTasks
+    });
+  });
+});
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

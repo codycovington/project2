@@ -24,9 +24,9 @@
 
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"> All Tasks</h5>
+                    <h5 class="card-title"> All Completed Tasks</h5>
                     <ul id="allTasks" class="list-group">
-                        {{#each Task}}
+                        {{#each Completed}}
                         <li class="list-group-item">
                             <h4>{{this.id}}. {{this.task_name}}</h4>
                             <p>Category: <strong>{{this.category}}</strong></p>
@@ -37,6 +37,51 @@
                         {{/each}}
                     </ul>
                 </div>
+                 
+                 <div class="card-body">
+                    <h5 class="card-title"> All In Progress Tasks</h5>
+                    <ul id="allTasks" class="list-group">
+                        {{#each InProgress}}
+                        <li class="list-group-item">
+                            <h4>{{this.id}}. {{this.task_name}}</h4>
+                            <p>Category: <strong>{{this.category}}</strong></p>
+                            <p>{{this.UserId}}</p>
+
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> All Todo Tasks</h5>
+                    <ul id="allTasks" class="list-group">
+                        {{#each Todo}}
+                        <li class="list-group-item">
+                            <h4>{{this.id}}. {{this.task_name}}</h4>
+                            <p>Category: <strong>{{this.category}}</strong></p>
+                            <p>{{this.UserId}}</p>
+
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> All Icebox Tasks</h5>
+                    <ul id="allTasks" class="list-group">
+                        {{#each Icebox}}
+                        <li class="list-group-item">
+                            <h4>{{this.id}}. {{this.task_name}}</h4>
+                            <p>Category: <strong>{{this.category}}</strong></p>
+                            <p>{{this.UserId}}</p>
+
+                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
                 <div>
                     <a href="/">← Back To Home</a>
                 </div>

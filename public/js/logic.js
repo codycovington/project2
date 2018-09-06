@@ -94,7 +94,7 @@ $(".delete").on("click", function () {
 // Task Logic
 $("#getValue").click(function (event) {
     event.preventDefault();
-    var selValue = $("input[name=category]:checked").val();
+    var selValue = $(".dropdown").val();
     console.log(selValue)
 
 
@@ -108,7 +108,7 @@ $("#getValue").click(function (event) {
     console.log($taskCategory)
 
     // this prevents premature submission without the required fields
-    if (!$newTask.val().trim() || !$taskCategory || !$UserId.val().trim()) {
+    if (!$newTask.val().trim() || !$taskCategory || !$UserId) {
         alert("Please complete all fields in order to move forward.");
         return
     };
@@ -149,7 +149,7 @@ $(".delete").on("click", function () {
 //handles the updating of a task
 $("#updateValue").click(function (event) {
     var id = $(this).data(id);
-    var selValue = $("input[name=category]:checked").val();
+    var selValue = $(".update_task").val();
     console.log(id.id)
     console.log(selValue)
 
