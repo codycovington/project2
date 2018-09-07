@@ -118,7 +118,7 @@ $("#getValue").click(function (event) {
     var newTask = {
         task_name: $newTask.val().trim(),
         category: $taskCategory,
-        UserId: $UserId.val().trim()
+        UserId: $UserId
     };
     console.log(newTask)
 
