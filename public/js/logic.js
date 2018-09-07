@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 //============================================================================//
 // Project logic
 
@@ -55,14 +57,14 @@ $(".user-form").on("submit", function (event) {
     event.preventDefault();
 
     // this prevents premature submission without the required fields
-    if (!$newUser.val().trim() || !$userProjectId.val().trim()) {
+    if (!$newUser.val().trim()) {
         alert("Please complete all fields in order to move forward.");
         return
     }
 
     var newUser = {
-        name: $newUser.val().trim(),
-        ProjectId: $userProjectId.val().trim()
+        name: $newUser.val().trim()
+        
     };
     console.log(newUser)
 
@@ -146,6 +148,13 @@ $(".delete").on("click", function () {
     });
 });
 
+//handles logging in
+$(".login").on("click", function () {
+    var id = $(this).data(id);
+    window.location.href = `/kanban/${id.id}`;
+
+});
+
 //handles the updating of a task
 $(".updateValue").click(function (event) {
     var id = $(this).data(id);
@@ -174,8 +183,6 @@ $(".updateValue").click(function (event) {
         console.log("updated");
         window.location.reload();
     });
-})
+});
 
-
-
-
+});
