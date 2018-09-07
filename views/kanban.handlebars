@@ -4,7 +4,9 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="../">
-                        <img src="./img/seisan-type-white.png" alt="Logo">
+
+                        <img src="/img/seisan-type-white.png" alt="Logo">
+
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
                         <span></span>
@@ -43,7 +45,9 @@
             <tr class="form-row">
                 <form class="task-form">
                     <td colspan="2">
-                        <input placeholder="Add a task" id="new-task" type="text" name="name" />
+
+                        <input placeholder="Add a task" id="new-task" type="text" class="is-small is-rounded" name="name" />
+
                         <form id="task-category">
                             <td colspan="2">
                                 <div>
@@ -57,6 +61,8 @@
                         </form>
                         </td>
                     </td>
+
+                    <input placeholder="Please use your User Id" id="user-task" type="text" name="user" data-id="{{this.id}}" value="{{this.id}}">
 
                     <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
                     </td>
