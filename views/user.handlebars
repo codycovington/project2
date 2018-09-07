@@ -1,111 +1,107 @@
 <section class="hero is-black is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="../">
-                            <img src="./assets/img/seisan-type-white.png" alt="Logo">
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="/">
-                                    <span class="icon">
-                                        <i class="fa fa-home"></i>
-                                    </span>
-                                    <span>Home</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="/graphdata/:id">
-                                    <span class="icon">
-                                        <i class="fa fa-book"></i>
-                                    </span>
-                                    <span>Progress
-                                    </span>
-                                </a>
-                            </span>
-
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <section class="container">
-                     
+    <div class="hero-head">
+        <nav class="navbar">
             <div class="container">
-    <div class="row">
-        <div class="col-8 offset-2">
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h5 class="card-title">Add a User</h5>
-                    <tbody>
-                        <tr class="form-row">
-                            <form class="user-form">
-                                <td colspan="4">
-                                    <input placeholder="Enter a name" id="new-user" type="text" name="name" />
-                                </td>
-                                <td colspan="4">
-                                    <input placeholder="Project ID" id="project-id" type="text" name="name" />
-                                </td>
-
-                                <td><button type="submit" class="btn btn-success">Create User</button>
-                                </td>
-                            </form>
-                        </tr>
-                    </tbody>
-
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="../">
+                        <img src="./assets/img/seisan-type-white.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">User</h5>
-                    <ul id="allUsers" class="list-group">
-                        {{#each User}}
-                        <li  class="list-group-item">
-                            {{!-- <a href="user/{{this.id}}">{{this.name}}</a> --}}
-                            <h4>{{this.id}}. {{this.name}}</h4>
-                            <button data-id="{{this.id}}" class="btn btn-primary float-right login">Login</button>
-                            <button data-id="{{this.id}}" class="btn btn-danger float-right delete">X</button>
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div>
-                    <a href="/">← Back To Home</a>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="/">
+                                <span class="icon">
+                                    <i class="fa fa-home"></i>
+                                </span>
+                                <span>Home</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="/graphdata/:id">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <span>Progress
+                                </span>
+                            </a>
+                        </span>
+
+                    </div>
                 </div>
             </div>
+        </nav>
+    </div>
+
+    <section class="container">
+
+        <div class="card">
+            <p class="title is-4 has-text-black level-item has-text-centered">Add A User</p>
+            <div class="field">
+                <div class="control">
+                    <form class="user-form">
+                        <input placeholder="Enter a name" id="new-user" type="text" name="name" class="input is-round is-medium" />
+                        <td>
+                            <div class="box has-text-centered">
+                                <button type="submit" class="button is-link is-medium is-rounded has-button-centered">Create
+                                    User
+                                </button>
+                            </div>
+
+                        </td>
+                    </form>
+                </div>
+            </div>
+
+
+    </section>
+
+
+<br>
+    </div>
+    <div class="container">
+        <div class="card">
+            <p class="title is-4 has-text-black level-item has-text-centered">User</p>
+            <ul id="allUsers" class="">
+                {{#each User}}
+                <li>
+                    <h4 class="title is-5 has-text-black level-item has-text-centered">{{this.id}}. {{this.name}}</h4>
+                    <div class="box has-text-centered">
+                        <button data-id="{{this.id}}" class=" login button is-link is-medium is-rounded">Login</button>
+                    </div>
+                    <div class="box has-text-centered">
+                        <button data-id="{{this.id}}" class=" delete button is-danger is-medium is-rounded"> Delete User </button>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
         </div>
     </div>
-</div>
 
-        </section>
-        <div class="columns is-mobile is-centered">
-            <div class="column is-half is-narrow"></div>
-        </div>
-        <footer>
-            <div class="box cta">
-                <div class="columns is-mobile is-centered">
-                    <div class="field is-grouped is-grouped-multiline">
-                        <div class="control">
-                            <!-- <div class="tags has-addons"><a class="tag is-link" href="https://github.com/dansup/bulma-templates">Bulma
-                                Templates
-                            </a><span class="tag is-light">Daniel Supernault</span></div>
-                    </div>
+    <div>
+        <a href="/">← Back To Home</a>
+    </div>
+
+
+
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half is-narrow"></div>
+    </div>
+    <footer>
+        <div class="box cta">
+            <div class="columns is-mobile is-centered">
+                <div class="field is-grouped is-grouped-multiline">
                     <div class="control">
-                        <div class="tags has-addons"><a class="tag is-link">The source code is licensed</a><span class="tag is-light">MIT
-                                <i class="fa fa-github"></i></span></div> -->
-                        </div>
+                        
                     </div>
                 </div>
             </div>
-        </footer>
-        <script src="../js/bulma.js"></script>
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="../js/usertasks.js"></script>
-        <script src="../js/bulma.js"></script>
+        </div>
+    </footer>
+    <script src="../js/bulma.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>

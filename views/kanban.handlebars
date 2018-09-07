@@ -1,283 +1,250 @@
 <section class="hero is-black is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="../">
-                            <img src="./assets/img/seisan-type-white.png" alt="Logo">
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="../">
+                        <img src="./assets/img/seisan-type-white.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="#">
+                                <span class="icon">
+                                    <i class="fa fa-home"></i>
+                                </span>
+                                <span>Home</span>
+                            </a>
                         </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-home"></i>
-                                    </span>
-                                    <span>Home</span>
-                                </a>
-                            </span>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="#">
-                                    <span class="icon">
-                                        <i class="fa fa-book"></i>
-                                    </span>
-                                    <span>Progress
-                                    </span>
-                                </a>
-                            </span>
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="#">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <span>Progress
+                                </span>
+                            </a>
+                        </span>
 
-                        </div>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
+    </div>
 
-        <section class="container">
-                     <tbody>
-                        <tr class="form-row">
-                            <form class="task-form">
-                                <td colspan="2">
-                                    <input placeholder="Add a task" id="new-task" type="text" name="name" />
-                                    <form id="task-category">  
-                                        <td colspan="2">
+    <section class="container">
+        <tbody>
+            <tr class="form-row">
+                <form class="task-form">
+                    <td colspan="2">
+                        <input placeholder="Add a task" id="new-task" type="text" name="name" />
+                        <form id="task-category">
+                            <td colspan="2">
+                                <div>
+                                    <select class="dropdown">
+                                        <option name="category" value="todo">Todo</option>
+                                        <option name="category" value="in-progress">In-Progress</option>
+                                        <option name="category" value="completed">Completed</option>
+                                        <option name="category" value="icebox">Ice Box</option>
+                                    </select>
+                                </div>
+                        </form>
+                        </td>
+                    </td>
+
+                    <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+
+        <div class="columns is-mobile is-centered" id="sectioncontainer">
+            <div class="column is-narrow">
+                <article class="message is-success">
+                    <div class="message-header">
+                        <p>To Do</p>
+                    </div>
+                    <div class="message-body">
+
+                        <ul id="allTasks" class="list-group">
+                            {{#each Todo}}
+                            <li class="board-item">
+                                <h4>{{this.task_name}}</h4>
+
+                                <form class="update-form" data-id="{{data.id}}">
+
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+
                                             <div>
-                                               <select class="dropdown">
-                                                 <option name="category" value="todo">Todo</option>
-                                                 <option name="category" value="in-progress">In-Progress</option>
-                                                 <option name="category" value="completed">Completed</option>
-                                                 <option name="category" value="icebox">Ice Box</option>
+                                                <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
                                                 </select>
-                                            </div>          
-                                    </form>
-                                </td>
-                                </td>
-                                <td colspan="2">
-                                    {{!-- <input placeholder="Please use your User Id" id="user-task" type="text" name="user"> --}}
-                                </td>
-                                <td><button type="submit" id="getValue" class=" btn btn-success">Create Task</button>
-                                </td>
-                            </form>
-                        </tr>
-                    </tbody>
+                                            </div>
 
-            <div class="columns is-mobile is-centered" id="sectioncontainer">
-                <div class="column is-narrow">
-                    <article class="message is-success">
-                        <div class="message-header">
-                            <p>To Do</p>
-                        </div>
-                        <div class="message-body">
-                            {{!-- <h5 class="card-title"> All Todo Tasks</h5> --}}
-                    <ul id="allTasks" class="list-group">
-                        {{#each Todo}}
-                        <li class="board-item">
-                            <h4>{{this.task_name}}</h4>
-                            {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
-                            {{!-- <p>{{this.UserId}}</p> --}}
-                            <form class="update-form" data-id="{{data.id}}">
-                                    {{!--
-                                    <td colspan="4">
-                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
-                                    </td> --}}
-                                    <br>
-                                    <td colspan="4">
-                                        <form id="task-category">
-                                            
-                                                <div>
-                                                    <select class="update_task">
-                                                    <option name="category" value="todo">Todo</option>
-                                                    <option name="category" value="in-progress">In-Progress</option>
-                                                    <option name="category" value="completed">Completed</option>
-                                                    <option name="category" value="icebox">Ice Box</option>
-                                                    </select>
-                                                </div>
-                                        
                                         </form>
-                                        
+
                                     </td>
-                                    <td colspan="4">
-                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
-                                    </td>
-                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
+                                    
+                                    <td><button type="submit" data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update
+                                            Task</button>
                                     </td>
                                 </form>
 
-                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
-                        </li>
-                        {{/each}}
-                    </ul>
-                        </div>
-                    </article>
-                </div>
-                <div class="column is-narrow">
-                    <article class="message is-warning">
-                        <div class="message-header">
-                            <p>In Progress</p>
-                        </div>
-                        <div class="message-body">
-                            <ul id="allTasks" class="list-group">
-                        {{#each InProgress}}
-                        <li class="list-group-item">
-                            <h4>{{this.task_name}}</h4>
-                            {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
-                            {{!-- <p>{{this.UserId}}</p> --}}
-
-                            <form class="update-form" data-id="{{data.id}}">
-                                    {{!--
-                                    <td colspan="4">
-                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
-                                    </td> --}}
-                                    <br>
-                                    <td colspan="4">
-                                        <form id="task-category">
-                                            
-                                                <div>
-                                                    <select class="update_task">
-                                                    <option name="category" value="todo">Todo</option>
-                                                    <option name="category" value="in-progress">In-Progress</option>
-                                                    <option name="category" value="completed">Completed</option>
-                                                    <option name="category" value="icebox">Ice Box</option>
-                                                    </select>
-                                                </div>
-                                        
-                                        </form>
-                                        
-                                    </td>
-                                    <td colspan="4">
-                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
-                                    </td>
-                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
-                                    </td>
-                                </form>
-
-                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
-                        </li>
-                        {{/each}}
-                    </ul>
-                        </div>
-                    </article>
-                </div>
-                <div class="column is-narrow">
-                    <article class="message is-danger">
-                        <div class="message-header">
-                            <p>Completed</p>
-                        </div>
-                        <div class="message-body">
-                        <ul id="allTasks" class="list-group">
-                        {{#each Completed}}
-                        <li class="list-group-item">
-                            <h4>{{this.task_name}}</h4>
-                            {{!-- <p>Category: <strong>{{this.category}}</strong></p> --}}
-                            {{!-- <p>{{this.UserId}}</p> --}}
-
-                            <form class="update-form" data-id="{{data.id}}">
-                                    {{!--
-                                    <td colspan="4">
-                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
-                                    </td> --}}
-                                    <br>
-                                    <td colspan="4">
-                                        <form id="task-category">
-                                            
-                                                <div>
-                                                    <select class="update_task">
-                                                    <option name="category" value="todo">Todo</option>
-                                                    <option name="category" value="in-progress">In-Progress</option>
-                                                    <option name="category" value="completed">Completed</option>
-                                                    <option name="category" value="icebox">Ice Box</option>
-                                                    </select>
-                                                </div>
-                                        
-                                        </form>
-                                        
-                                    </td>
-                                    <td colspan="4">
-                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
-                                    </td>
-                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
-                                    </td>
-                                </form>
-
-                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
-                        </li>
-                        {{/each}}
-                    </ul>
+                                <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
+                            </li>
+                            {{/each}}
+                        </ul>
                     </div>
-                    </article>
-                </div>
-                <div class="column is-narrow">
-                    <article class="message is-link">
-                        <div class="message-header">
-                            <p>IceBox</p>
-                        </div>
-                        <div class="message-body">
-                        <ul id="allTasks" class="list-group">
-                        {{#each Icebox}}
-                        <li class="list-group-item">
-                            <h4>{{this.task_name}}</h4>
-                            {{!-- <p>Category: <strong>{{this.category}}</strong></p>
-                            <p>{{this.UserId}}</p> --}}
-
-                            <form class="update-form" data-id="{{data.id}}">
-                                    {{!--
-                                    <td colspan="4">
-                                        <input placeholder="Enter a task" id="update-task" type="text" name="name" />
-                                    </td> --}}
-                                    <br>
-                                    <td colspan="4">
-                                        <form id="task-category">
-                                            
-                                                <div>
-                                                    <select class="update_task">
-                                                    <option name="category" value="todo">Todo</option>
-                                                    <option name="category" value="in-progress">In-Progress</option>
-                                                    <option name="category" value="completed">Completed</option>
-                                                    <option name="category" value="icebox">Ice Box</option>
-                                                    </select>
-                                                </div>
-                                        
-                                        </form>
-                                        
-                                    </td>
-                                    <td colspan="4">
-                                        {{!-- <input placeholder="Please use your User Id" id="update-user" type="text" name="user"> --}}
-                                    </td>
-                                    <td><button type="submit"data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update Task</button>
-                                    </td>
-                                </form>
-                            <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
-                        </li>
-                        {{/each}}
-                    </ul>
-                    </div>
-                    </article>
-                </div>
+                </article>
             </div>
-        </section>
-        <div class="columns is-mobile is-centered">
-            <div class="column is-half is-narrow"></div>
+            <div class="column is-narrow">
+                <article class="message is-warning">
+                    <div class="message-header">
+                        <p>In Progress</p>
+                    </div>
+                    <div class="message-body">
+                        <ul id="allTasks" class="list-group">
+                            {{#each InProgress}}
+                            <li class="list-group-item">
+                                <h4>{{this.task_name}}</h4>
+
+
+                                <form class="update-form" data-id="{{data.id}}">
+                                    
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+
+                                            <div>
+                                                <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                </select>
+                                            </div>
+
+                                        </form>
+
+                                    </td>
+                                    
+                                    <td><button type="submit" data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update
+                                            Task</button>
+                                    </td>
+                                </form>
+
+                                <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </article>
+            </div>
+            <div class="column is-narrow">
+                <article class="message is-danger">
+                    <div class="message-header">
+                        <p>Completed</p>
+                    </div>
+                    <div class="message-body">
+                        <ul id="allTasks" class="list-group">
+                            {{#each Completed}}
+                            <li class="list-group-item">
+                                <h4>{{this.task_name}}</h4>
+
+                                <form class="update-form" data-id="{{data.id}}">
+
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+
+                                            <div>
+                                                <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                </select>
+                                            </div>
+
+                                        </form>
+
+                                    </td>
+
+                                    <td><button type="submit" data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update
+                                            Task</button>
+                                    </td>
+                                </form>
+
+                                <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </article>
+            </div>
+            <div class="column is-narrow">
+                <article class="message is-link">
+                    <div class="message-header">
+                        <p>IceBox</p>
+                    </div>
+                    <div class="message-body">
+                        <ul id="allTasks" class="list-group">
+                            {{#each Icebox}}
+                            <li class="list-group-item">
+                                <h4>{{this.task_name}}</h4>
+
+                                <form class="update-form" data-id="{{data.id}}">
+
+                                    <br>
+                                    <td colspan="4">
+                                        <form id="task-category">
+
+                                            <div>
+                                                <select class="update_task">
+                                                    <option name="category" value="todo">Todo</option>
+                                                    <option name="category" value="in-progress">In-Progress</option>
+                                                    <option name="category" value="completed">Completed</option>
+                                                    <option name="category" value="icebox">Ice Box</option>
+                                                </select>
+                                            </div>
+
+                                        </form>
+
+                                    </td>
+                                    <td><button type="submit" data-id="{{this.id}}" class="updateValue" class="input is-small is-rounded user-form">Update
+                                            Task</button>
+                                    </td>
+                                </form>
+                                <button data-id="{{this.id}}" class="button is-rounded is-link is-small delete">X</button>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </article>
+            </div>
         </div>
-        <footer>
-            <div class="box cta">
-                <div class="columns is-mobile is-centered">
-                    <div class="field is-grouped is-grouped-multiline">
-                        <div class="control">
-                            <!-- <div class="tags has-addons"><a class="tag is-link" href="https://github.com/dansup/bulma-templates">Bulma
-                                Templates
-                            </a><span class="tag is-light">Daniel Supernault</span></div>
-                    </div>
-                    <div class="control">
-                        <div class="tags has-addons"><a class="tag is-link">The source code is licensed</a><span class="tag is-light">MIT
-                                <i class="fa fa-github"></i></span></div> -->
-                        </div>
-                    </div>
+    </section>
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half is-narrow"></div>
+    </div>
+    <footer>
+        <div class="box cta">
+            <div class="columns is-mobile is-centered">
+                <div class="field is-grouped is-grouped-multiline">
+                    
                 </div>
             </div>
-        </footer>
-        <script src="../js/bulma.js"></script>
+        </div>
+    </footer>
+    <script src="../js/bulma.js"></script>
