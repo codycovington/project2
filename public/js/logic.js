@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 //============================================================================//
 // Project logic
 
@@ -55,14 +57,14 @@ $(".user-form").on("submit", function (event) {
     event.preventDefault();
 
     // this prevents premature submission without the required fields
-    if (!$newUser.val().trim() || !$userProjectId.val().trim()) {
+    if (!$newUser.val().trim()) {
         alert("Please complete all fields in order to move forward.");
         return
     }
 
     var newUser = {
-        name: $newUser.val().trim(),
-        ProjectId: $userProjectId.val().trim()
+        name: $newUser.val().trim()
+        
     };
     console.log(newUser)
 
@@ -116,7 +118,7 @@ $("#getValue").click(function (event) {
     var newTask = {
         task_name: $newTask.val().trim(),
         category: $taskCategory,
-        UserId: $UserId.val().trim()
+        UserId: $UserId
     };
     console.log(newTask)
 
@@ -146,12 +148,21 @@ $(".delete").on("click", function () {
     });
 });
 
+//handles logging in
+$(".login").on("click", function () {
+    var id = $(this).data(id);
+    window.location.href = `/kanban/${id.id}`;
+
+});
+
 //handles the updating of a task
 $(".updateValue").click(function (event) {
     var id = $(this).data(id);
-    var selValue = $(".update_task").val();
-    console.log(id.id)
-    console.log(selValue)
+    // var selValue = $(".update_task option:checked").val();
+    var selValue = $(`form[data-id="${id.id}"]`).find(".update_task option:checked").val();
+    // console.log(selValue);
+    // console.log(id.id)
+    // console.log(selValue)
 
 
     var $updateCategory = selValue;
@@ -161,7 +172,7 @@ $(".updateValue").click(function (event) {
         id: id.id,
         category: $updateCategory
     };
-    console.log("id updated: " + id.id);
+    // console.log("id updated: " + id.id);
     console.log("category updated: " + $updateCategory);
 
     $.ajax("/api/tasks/" + id.id, {
@@ -172,8 +183,6 @@ $(".updateValue").click(function (event) {
         console.log("updated");
         window.location.reload();
     });
-})
+});
 
-
-
-
+});
