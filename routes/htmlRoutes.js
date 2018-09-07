@@ -10,7 +10,7 @@ module.exports = function (app) {
     db.Project.findAll({}).then(function (dbProjects) {
       db.User.findAll({}).then(function (dbUsers) {
         db.Task.findAll({}).then(function (dbTasks) {
-          return res.render("put", {
+          return res.render("index", {
             Project: dbProjects,
             User: dbUsers,
             Task: dbTasks
@@ -105,10 +105,10 @@ app.get("/graphdata", function (req, res) {
     // console.log(dbtasks[0],dbtasks[1],dbtasks[2],dbtasks[3]);
     // console.log("Async function executed");
     await res.render("kanban", {
-      Completed: dbtasks[0],
-      InProgress: dbtasks[1],
-      Todo: dbtasks[2],
-      Icebox: dbtasks[3]
+      completed: dbtasks[0],
+      inprogress: dbtasks[1],
+      todo: dbtasks[2],
+      icebox: dbtasks[3]
     });
    }
     asyncCall();

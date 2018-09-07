@@ -147,11 +147,13 @@ $(".delete").on("click", function () {
 });
 
 //handles the updating of a task
-$("#updateValue").click(function (event) {
+$(".updateValue").click(function (event) {
     var id = $(this).data(id);
-    var selValue = $(".update_task").val();
-    console.log(id.id)
-    console.log(selValue)
+    // var selValue = $(".update_task option:checked").val();
+    var selValue = $(`form[data-id="${id.id}"]`).find(".update_task option:checked").val();
+    // console.log(selValue);
+    // console.log(id.id)
+    // console.log(selValue)
 
 
     var $updateCategory = selValue;
@@ -161,7 +163,7 @@ $("#updateValue").click(function (event) {
         id: id.id,
         category: $updateCategory
     };
-    console.log("id updated: " + id.id);
+    // console.log("id updated: " + id.id);
     console.log("category updated: " + $updateCategory);
 
     $.ajax("/api/tasks/" + id.id, {
@@ -170,7 +172,7 @@ $("#updateValue").click(function (event) {
         data: update
     }).then(function () {
         console.log("updated");
-        location.reload();
+        window.location.reload();
     });
 })
 
