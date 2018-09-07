@@ -114,15 +114,14 @@ $(document).ready(function () {
         console.log($taskCategory)
 
         // this prevents premature submission without the required fields
-        if (!$newTask.val().trim() || !$taskCategory || !$UserId) {
+        if (!$newTask.val().trim() || !$taskCategory) {
             alert("Please complete all fields in order to move forward.");
             return
         };
 
         var newTask = {
             task_name: $newTask.val().trim(),
-            category: $taskCategory,
-            UserId: $UserId.val().trim()
+            category: $taskCategory
         };
         console.log(newTask)
 
@@ -183,3 +182,71 @@ $(document).ready(function () {
 });
 
 
+//modal logic
+
+// Trigger modals
+(function () {
+    var modalFX = (function () {
+        var elements = {
+            target: 'data-target',
+            active: 'is-active',
+            button: '.modal-button',
+            close: '.modal-close',
+            buttonClose: '.modal-button-close',
+            background: '.modal-background'
+        };
+        var onClickEach = function (selector, callback) {
+            var arr = document.querySelectorAll(selector);
+            arr.forEach(function (el) {
+                el.addEventListener('click', callback);
+            })
+        };
+        var events = function () {
+            onClickEach(elements.button, openModal);
+            onClickEach(elements.close, closeModal);
+            onClickEach(elements.buttonClose, closeAll);
+            onClickEach(elements.background, closeModal);
+            // Close all modals if ESC key is pressed
+            document.addEventListener('keyup', function(key){
+                if(key.keyCode == 27) {
+                    closeAll();
+                }
+            });
+        };
+        var closeAll = function() {
+            var openModal = document.querySelectorAll('.' + elements.active);
+            openModal.forEach(function (modal) {
+                modal.classList.remove(elements.active);
+            })
+            unFreeze();            
+        };
+        var openModal = function () {
+            var modal = this.getAttribute(elements.target);
+            freeze();
+            document.getElementById(modal).classList.add(elements.active);
+        };
+        var closeModal = function () {
+            var modal = this.parentElement.id;
+            document.getElementById(modal).classList.remove(elements.active);
+            unFreeze();
+        };
+        // Freeze scrollbars
+        var freeze = function () {
+            document.getElementsByTagName('html')[0].style.overflow = "hidden"
+            document.getElementsByTagName('body')[0].style.overflowY = "scroll";
+        };
+        
+        var unFreeze = function () {
+            document.getElementsByTagName('html')[0].style.overflow = ""
+            document.getElementsByTagName('body')[0].style.overflowY = "";
+        };
+        return {
+            init: function () {
+                events();
+            }
+        }
+    })();
+    modalFX.init();
+})();
+
+!function(){var t,n,e,o,l,c,a,d,i,m,u,s;(t="data-target",n="is-active",e=".modal-button",o=".modal-close",l=".modal-button-close",c=".modal-background",a=function(e,t){document.querySelectorAll(e).forEach(function(e){e.addEventListener("click",t)})},d=function(){document.querySelectorAll("."+n).forEach(function(e){e.classList.remove(n)}),s()},i=function(){var e=this.getAttribute(t);u(),document.getElementById(e).classList.add(n)},m=function(){var e=this.parentElement.id;document.getElementById(e).classList.remove(n),s()},u=function(){document.getElementsByTagName("html")[0].style.overflow="hidden",document.getElementsByTagName("body")[0].style.overflowY="scroll"},s=function(){document.getElementsByTagName("html")[0].style.overflow="",document.getElementsByTagName("body")[0].style.overflowY=""},{init:function(){a(e,i),a(o,m),a(l,d),a(c,m),document.addEventListener("keyup",function(e){27==e.keyCode&&d()})}}).init()}();

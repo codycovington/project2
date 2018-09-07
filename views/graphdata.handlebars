@@ -1,10 +1,62 @@
+<section class="hero is-info is-fullheight">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="../">
+                        <img src="./img/seisan-type-white.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="/">
+                                <span class="icon">
+                                    <i class="fa fa-home"></i>
+                                </span>
+                                <span>Home</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-white is-outlined" href="/graphdata">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <span>Progress
+                                </span>
+                            </a>
+                        </span>
 
-<div id="rank"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
- <canvas id="barChart" width="400" height="400" style="float:left"></canvas>
+    <div class="container">
+        <div class="row">
+            <div class="columns">
+                <div class="column is-5">
+                    <canvas id="barChart" width="550" height="550" style="float:left"></canvas>
+                </div>
+                <div class="column is-3">
+                    <div id="rank">
+                    </div>
+                </div>
+                <div class="column is-5">
+                    <canvas id="pieChart" width="550" height="550" style="float:center"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
- <canvas id="pieChart" width="400" height="400" style="float:left"></canvas>
+    
 
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="../js/graphdata.js"></script>
 
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../js/graphdata.js"></script>
