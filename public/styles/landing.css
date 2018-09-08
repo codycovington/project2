@@ -26,7 +26,12 @@ pre {
 }
 .container p {
   margin-bottom: 1rem
+  
 }
+
+
+
+
 ul li { 
   margin: 10px 20px; 0
 }
@@ -55,7 +60,7 @@ a.link {
         opacity: 1; }
     .modal.modal-fx-fadeInScale .modal-content {
       -webkit-transform: scale(0.7);
-           -o-transform: scale(0.7);
+          -o-transform: scale(0.7);
               transform: scale(0.7);
       opacity: 0;
       -webkit-transition: all 0.3s;
@@ -63,10 +68,10 @@ a.link {
       transition: all 0.3s; }
     .modal.modal-fx-fadeInScale.is-active .modal-content {
       -webkit-transform: scale(1);
-           -o-transform: scale(1);
+      -o-transform: scale(1);
               transform: scale(1);
       opacity: 1; }
-   
+
   @-webkit-keyframes slit {
     50% {
       -webkit-transform: translateZ(-250px) rotateY(89deg);
@@ -93,7 +98,7 @@ a.link {
               transform: translateZ(-250px) rotateY(89deg);
       opacity: 1;
       -webkit-animation-timing-function: ease-in;
-           -o-animation-timing-function: ease-in;
+        -o-animation-timing-function: ease-in;
               animation-timing-function: ease-in; }
     100% {
       -webkit-transform: translateZ(0) rotateY(0deg);
