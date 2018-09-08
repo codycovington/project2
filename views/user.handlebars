@@ -42,16 +42,16 @@
     </div>
 
 
-    <section class="container">
+    <section class="container is-fluid">
 
-        <div class="card">
-            <p class="title is-4 has-text-black level-item has-text-centered">Add A User</p>
+        <div class="card has-background-grey-lighter">
+            <p class="title is-4 has-text-black level-item has-text-centered has-background-grey-lighter">Add A User</p>
             <div class="field">
                 <div class="control">
                     <form class="user-form">
-                        <input placeholder="Enter a name" id="new-user" type="text" name="name" class="input is-round is-medium" />
+                        <input placeholder="Enter a name" id="new-user" type="text" name="name" class="input is-round is-medium  has-background-white-bis" />
                         <td>
-                            <div class="box has-text-centered">
+                            <div class="box has-text-centered has-background-grey-lighter">
                                 <button type="submit" class="button is-link is-medium is-rounded has-button-centered">Create
                                     User
                                 </button>
@@ -68,20 +68,25 @@
 
     <br>
     </div>
-    <div class="container">
-        <div class="card">
+    <div class="container  is-fluid has-background-grey-lighter">
+        <div class="card has-background-grey-lighter">
             <p class="title is-4 has-text-black level-item has-text-centered">User</p>
-            <ul id="allUsers" class="">
+            <ul id="allUsers" class="normal">
                 {{#each User}}
-                <li>
-                    <h4 class="title is-5 has-text-black level-item has-text-centered">{{this.id}}. {{this.name}}</h4>
-                    <div class="box has-text-centered">
-                        <button data-id="{{this.id}}" class=" login button is-link is-medium is-rounded">Login</button>
-                    </div>
-                    <div class="box has-text-centered">
-                        <button data-id="{{this.id}}" class=" delete button is-danger is-medium is-rounded"> Delete User
+                <li class=" box has-background-grey-lighter">
+                    <h4 class="title is-5 has-text-black level-item has-text-centered ">{{this.id}}.
+                        {{this.name}}</h4>
+                    <div class="box has-text-centered has-background-grey-lighter ">
+                        <div>
+                            <button data-id="{{this.id}}" class="  login button is-link is-medium is-rounded">Login</button>
+                        </div>
+                        <br>
+                        <div class=" has-text-centered has-background-grey-lighter">
+                            <button data-id="{{this.id}}" class=" delete button is-danger is-medium is-rounded">
                             </button>
+                        </div>
                     </div>
+
                 </li>
                 {{/each}}
             </ul>
@@ -97,16 +102,6 @@
     <div class="columns is-mobile is-centered">
         <div class="column is-half is-narrow"></div>
     </div>
-    <footer>
-        <div class="box cta">
-            <div class="columns is-mobile is-centered">
-                <div class="field is-grouped is-grouped-multiline">
-                    <div class="control">
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     <script src="../js/bulma.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
